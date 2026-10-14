@@ -3,6 +3,7 @@ package com.zouhari.ebankservice.service;
 
 import com.zouhari.ebankservice.entities.BankAccount;
 import com.zouhari.ebankservice.feign.CustomerRestClient;
+import com.zouhari.ebankservice.model.Customer;
 import com.zouhari.ebankservice.repository.BankAccountRepository;
 import org.springframework.stereotype.Service;
 
@@ -36,9 +37,15 @@ public class EbankService {
             return bankAccount;
     }
     public BankAccount save(BankAccount bankAccount) {
-        bankAccount.setId(UUID.randomUUID().toString());
-        bankAccount.setCreatedAt(new Date());
+        try {
+            Customer customer = customerRestClient.getCustomerById(bankAccount.getCustomerId());
+            bankAccount.setId(UUID.randomUUID().toString());
+            bankAccount.setCreatedAt(new Date());
             return accountRepository.save(bankAccount);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
 
 
 
