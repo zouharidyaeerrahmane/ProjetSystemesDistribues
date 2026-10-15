@@ -22,7 +22,7 @@ public class DiscordBot {
     private void perform(MessageReceivedEvent event) {
         if  (event.getAuthor().isBot()) return;
         String query = event.getMessage().getContentRaw();
-        String response = ebankAgent.chat(query);
+        String response = ebankAgent.chat(new Prompt(query));
         event.getChannel().sendMessage(response).queue();
     }
 }

@@ -37,12 +37,17 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-
+        <dependency>
+            <groupId>org.telegram</groupId>
+            <artifactId>telegrambots-spring-boot-starter</artifactId>
+            <version>6.9.7.1</version>
+            <scope>compile</scope>
+        </dependency>
 
         <dependency>
             <groupId>com.zgamelogic</groupId>
             <artifactId>spring-boot-starter-discord</artifactId>
-            <version>5.0.0</version>
+            <version>5.0.4</version>
             <scope>compile</scope>
         </dependency>
 

@@ -2,6 +2,7 @@
 package com.zouhari.ebankbotservice.controllers;
 
 import com.zouhari.ebankbotservice.agents.EbankAgent;
+import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,6 @@ public class EbankChatbotController {
                     defaultValue = "Bonjour"
             ) String query) {
 
-        return ebankAgent.chat(query);
+        return ebankAgent.chat(new Prompt(query));
     }
 }
